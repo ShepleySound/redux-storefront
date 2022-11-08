@@ -21,6 +21,8 @@ export const cartSlice = createSlice({
 
 const { actions, reducer } = cartSlice;
 
-export const { addItem } = actions;
+export const { addItem, increment } = actions;
+
+export const selectCount = (state) => state.cart.itemCount;
 
 export default reducer;
