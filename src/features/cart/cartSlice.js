@@ -16,12 +16,24 @@ export const cartSlice = createSlice({
       }
       state.itemCount += qty;
     },
+    removeItem: (state, action) => {
+      const productId = action.payload.productId;
+      const qty = action.payload.qty || null;
+
+      if (!qty || qty >= state.products[productId]) {
+        state.itemCount -= state.products[productId];
+        delete state.products[productId];
+      } else {
+        state.itemCount -= qty;
+        state.products[productId] -= qty;
+      }
+    },
   },
 });
 
 const { actions, reducer } = cartSlice;
 
-export const { addItem, increment } = actions;
+export const { addItem, removeItem } = actions;
 
 export const selectCount = (state) => state.cart.itemCount;
 
