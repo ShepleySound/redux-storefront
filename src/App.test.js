@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import renderWithProvider from './utils/test-utils';
 import App from './App';
 import userEvent from '@testing-library/user-event';
