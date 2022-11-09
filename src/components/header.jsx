@@ -1,26 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   AppBar,
   Badge,
-  Box,
   Button,
   Drawer,
-  IconButton,
   Toolbar,
   Tooltip,
   Typography,
 } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { selectCount, increment } from '../features/cart/cartSlice';
+import { selectCount } from '../features/cart/cartSlice';
 import { useState } from 'react';
 import CartList from './cart-list';
 
 export default function Header() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const itemCount = useSelector(selectCount);
-  const products = useSelector((state) => state.cart.products);
-  const dispatch = useDispatch();
-  console.log(products);
 
   return (
     <>

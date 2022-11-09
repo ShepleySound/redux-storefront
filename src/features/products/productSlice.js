@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { selectActive } from '../categories/categorySlice';
 
 export const productSlice = createSlice({
   name: 'products',
@@ -68,7 +67,7 @@ export const productSlice = createSlice({
   reducers: {},
 });
 
-const { actions, reducer } = productSlice;
+const { reducer } = productSlice;
 
 // export const { }
 

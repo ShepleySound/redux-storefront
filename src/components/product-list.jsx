@@ -1,6 +1,6 @@
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectProductsByCategory } from '../features/products/productSlice';
 import ProductCard from './product-card';
 
