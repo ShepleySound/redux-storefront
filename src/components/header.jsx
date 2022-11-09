@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   AppBar,
   Badge,
@@ -16,7 +16,6 @@ import CartList from './cart-list';
 export default function Header() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const itemCount = useSelector(selectCount);
-  const products = useSelector((state) => state.cart.products);
 
   return (
     <>
