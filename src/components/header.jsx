@@ -3,16 +3,25 @@ import {
   AppBar,
   Badge,
   Box,
+  Button,
+  Drawer,
   IconButton,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { selectCount, increment } from '../features/cart/cartSlice';
+import { useState } from 'react';
+import CartList from './cart-list';
 
 export default function Header() {
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
   const itemCount = useSelector(selectCount);
+  const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
+  console.log(products);
+
   return (
     <>
       <AppBar color='transparent'>
@@ -20,14 +29,27 @@ export default function Header() {
           <Typography variant='h4' sx={{ flexGrow: 1 }}>
             Redux Storefront
           </Typography>
-          <IconButton aria-label='cart'>
+          <Tooltip title='Cart'>
             <Badge badgeContent={itemCount} color='info'>
-              <ShoppingCartOutlinedIcon />
+              <Button
+                aria-label='cart'
+                endIcon={<ShoppingCartOutlinedIcon />}
+                onClick={() => setDrawerOpen(true)}
+              >
+                Cart
+              </Button>
             </Badge>
-          </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
       <Toolbar />
+      <Drawer
+        anchor={'right'}
+        open={isDrawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <CartList />
+      </Drawer>
     </>
   );
 }

@@ -17,6 +17,7 @@ export default function CategoryBar() {
           {categoryNames.map((category) => {
             return (
               <Button
+                key={category}
                 variant={
                   activeCategory.normalized === category
                     ? 'contained'

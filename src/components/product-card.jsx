@@ -7,6 +7,7 @@ import {
   Button,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice';
 
 export default function ProductCard({ id }) {
   const product = useSelector((state) => state.products[id]);
@@ -18,15 +19,17 @@ export default function ProductCard({ id }) {
         maxWidth: 400,
       }}
     >
-      <CardMedia
-        component='img'
-        height='140'
-        image='https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1452&q=80'
-      />
+      <CardMedia component='img' height='140' image={product.imageURL} />
       <CardContent>
-        <Typography>{product.name}</Typography>
-        <Typography>{product.price}</Typography>
+        <Typography variant='h5'>{product.name}</Typography>
+        <Typography>{product.description}</Typography>
+        <Typography>{`$ ${product.price}`}</Typography>
       </CardContent>
+      <CardActions>
+        <Button onClick={() => dispatch(addItem({ qty: 1, productId: id }))}>
+          add to cart
+        </Button>
+      </CardActions>
     </Card>
   );
 }

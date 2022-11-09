@@ -9,19 +9,19 @@ export const categorySlice = createSlice({
         displayName: 'Electronics',
         description: 'Enter description here',
       },
-      skincare: {
-        normalized: 'skincare',
-        displayName: 'Skin Care',
-        description: 'Enter description here',
-      },
       health: {
         normalized: 'health',
-        displayName: 'Health & Household',
+        displayName: 'Health & Beauty',
         description: 'Enter description here',
       },
       kitchen: {
         normalized: 'kitchen',
         displayName: 'Kitchen',
+        description: 'Enter description here',
+      },
+      clothing: {
+        normalized: 'clothing',
+        displayName: 'Clothing',
         description: 'Enter description here',
       },
     },
