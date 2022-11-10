@@ -17,6 +17,13 @@ export const apiSlice = createApi({
     getCategories: builder.query({
       query: () => `/categories`,
     }),
+    makePurchase: builder.mutation({
+      query: ({ id, ...put }) => ({
+        url: `products/${id}`,
+        method: 'PUT',
+        body: put,
+      }),
+    }),
   }),
 });
 

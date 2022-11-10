@@ -2,7 +2,7 @@
 
 An e-commerce application that uses [Redux](https://redux-toolkit.js.org/) as the primary state container and [MUI](https://mui.com/) as the main source for UI components.
 
-The application will feature products pulled from a live API, product detail pages, and a mocked checkout flow.
+The application features products from a live API, fetched using RTK Query.
 
 From a developer standpoint, here are some of my goals in building this project -
 

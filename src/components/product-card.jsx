@@ -11,6 +11,7 @@ import { addItem } from '../features/cart/cartSlice';
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const inCart = useSelector((state) => state.cart.products[product._id] || 0);
 
   return (
     <Card
@@ -26,7 +27,11 @@ export default function ProductCard({ product }) {
       </CardContent>
       <CardActions>
         <Button
-          onClick={() => dispatch(addItem({ qty: 1, productId: product._id }))}
+          onClick={() => {
+            if (inCart < product.inStock) {
+              dispatch(addItem({ qty: 1, productId: product._id }));
+            }
+          }}
         >
           add to cart
         </Button>
