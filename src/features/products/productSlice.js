@@ -76,6 +76,6 @@ export const selectProductById = (state, action) =>
   state.products[action.payload];
 export const selectProductsByCategory = (state) =>
   Object.values(state.products).filter(
-    (product) => product.category === state.categories.activeCategory
+    (product) => product.category === state.filtering.activeCategory
   );
 export default reducer;

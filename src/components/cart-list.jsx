@@ -11,11 +11,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem } from '../features/cart/cartSlice';
+import { useGetProductByIdQuery } from '../features/api/apiSlice';
 
 function CartItem({ productId, qty }) {
-  const productDetails = useSelector((state) => state.products[productId]);
+  const productDetails = useGetProductByIdQuery(productId);
   const dispatch = useDispatch();
-  return (
+
+  return productDetails.isLoading ? (
+    <div>loading...</div>
+  ) : (
     <ListItem
       secondaryAction={
         <Tooltip title='Delete'>
@@ -30,7 +34,7 @@ function CartItem({ productId, qty }) {
       }
     >
       <ListItemText
-        primary={productDetails.name}
+        primary={productDetails.data.name}
         secondary={`Quantity: ${qty}`}
       />
     </ListItem>
@@ -38,7 +42,7 @@ function CartItem({ productId, qty }) {
 }
 export default function CartList() {
   const products = useSelector((state) => state.cart.products);
-  console.log(products);
+
   return Object.keys(products).length === 0 ? (
     <Container>
       <Typography py={3}>Your cart is empty</Typography>

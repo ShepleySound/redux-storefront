@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import cartReducer from '../features/cart/cartSlice';
-import categoryReducer from '../features/categories/categorySlice';
+import categoryReducer from '../features/filtering/filteringSlice';
 import productReducer from '../features/products/productSlice';
 
 export default function renderWithProvider(
