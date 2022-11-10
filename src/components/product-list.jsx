@@ -1,14 +1,14 @@
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useSelector } from 'react-redux';
-import { useGetProductsQuery } from '../features/api/apiSlice';
-import { selectProductsByCategory } from '../features/products/productSlice';
+import { useGetProductByCategoryQuery } from '../features/api/apiSlice';
+import { selectActiveCategory } from '../features/filtering/filteringSlice';
 import ProductCard from './product-card';
 
 export default function ProductList() {
-  const productsByCategory = useSelector(selectProductsByCategory);
-  const products = useGetProductsQuery();
-  console.log(products);
+  const activeCategory = useSelector(selectActiveCategory);
+  const products = useGetProductByCategoryQuery(activeCategory);
+
   return (
     <Container>
       <Grid
@@ -16,11 +16,15 @@ export default function ProductList() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {productsByCategory.map((product) => (
-          <Grid xs={2} sm={4} md={4} key={product.id}>
-            <ProductCard key={product.id} id={product.id} />
-          </Grid>
-        ))}
+        {products.isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          products.data.results.map((product) => (
+            <Grid xs={2} sm={4} md={4} key={product._id}>
+              <ProductCard key={product._id} product={product} />
+            </Grid>
+          ))
+        )}
       </Grid>
     </Container>
   );

@@ -1,6 +1,6 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from '../features/cart/cartSlice';
-import categoryReducer from '../features/categories/categorySlice';
+import filteringReducer from '../features/filtering/filteringSlice';
 import productReducer from '../features/products/productSlice';
 import { apiSlice } from '../features/api/apiSlice';
 
@@ -8,7 +8,7 @@ export default configureStore({
   reducer: {
     cart: cartReducer,
     products: productReducer,
-    categories: categoryReducer,
+    filtering: filteringReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -1,34 +1,36 @@
 import { Button, ButtonGroup, Toolbar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectActive,
-  selectCategoryNames,
+  selectActiveCategory,
   switchCategory,
-} from '../features/categories/categorySlice';
+} from '../features/filtering/filteringSlice';
+
+import { useGetCategoriesQuery } from '../features/api/apiSlice';
 
 export default function CategoryBar() {
-  const activeCategory = useSelector(selectActive);
-  const categoryNames = useSelector(selectCategoryNames);
+  const activeCategory = useSelector(selectActiveCategory);
+  const categories = useGetCategoriesQuery();
+
   const dispatch = useDispatch();
   return (
     <>
       <Toolbar>
         <ButtonGroup>
-          {categoryNames.map((category) => {
-            return (
+          {categories.isLoading ? (
+            <div>loading...</div>
+          ) : (
+            categories.data.results.map((category) => (
               <Button
-                key={category}
+                key={category._id}
                 variant={
-                  activeCategory.normalized === category
-                    ? 'contained'
-                    : 'outlined'
+                  activeCategory === category.name ? 'contained' : 'outlined'
                 }
-                onClick={() => dispatch(switchCategory(category))}
+                onClick={() => dispatch(switchCategory(category.name))}
               >
-                {category}
+                {category.name}
               </Button>
-            );
-          })}
+            ))
+          )}
         </ButtonGroup>
       </Toolbar>
     </>
