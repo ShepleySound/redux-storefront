@@ -1,12 +1,14 @@
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useSelector } from 'react-redux';
+import { useGetProductsQuery } from '../features/api/apiSlice';
 import { selectProductsByCategory } from '../features/products/productSlice';
 import ProductCard from './product-card';
 
 export default function ProductList() {
   const productsByCategory = useSelector(selectProductsByCategory);
-
+  const products = useGetProductsQuery();
+  console.log(products);
   return (
     <Container>
       <Grid
