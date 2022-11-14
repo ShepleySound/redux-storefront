@@ -35,7 +35,7 @@ export default function ProductCard({ product }) {
         >
           add to cart
         </Button>
-        <Button component={Link} to={`/products/${product._id}`}>
+        <Button component={Link} to={`/${product._id}`}>
           view details
         </Button>
       </CardActions>

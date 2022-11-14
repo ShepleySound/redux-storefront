@@ -23,7 +23,7 @@ export default function CategoryBar() {
               <Tooltip key={category._id} title={category.description}>
                 <Button
                   component={Link}
-                  to={'/products'}
+                  to={'/'}
                   key={category._id}
                   variant={
                     activeCategory === category.name ? 'contained' : 'text'
