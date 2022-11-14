@@ -2,7 +2,6 @@ import {
   Typography,
   Card,
   CardActions,
-  CardMedia,
   CardContent,
   Button,
 } from '@mui/material';
@@ -21,7 +20,6 @@ export default function ProductCard({ product }) {
         maxWidth: 400,
       }}
     >
-      {/* <CardMedia component='img' height='140' image={product.imageURL} /> */}
       <CardContent>
         <Typography variant='h5'>{product.name}</Typography>
         <Typography>{`Stock: ${product.inStock}`}</Typography>

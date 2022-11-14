@@ -50,7 +50,7 @@ export default function CartList() {
   const products = useSelector((state) => state.cart.products);
   const productDetails = useGetProductsQuery();
   const dispatch = useDispatch();
-  const [updateProduct, { isLoading }] = useEditProductMutation();
+  const [updateProduct] = useEditProductMutation();
 
   async function makePurchase() {
     for (let productId in products) {

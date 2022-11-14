@@ -1,5 +1,4 @@
 import Header from './components/header';
-import CategoryBar from './components/category-bar';
 import ProductList from './components/product-list';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import ProductDetails from './components/product-details';
@@ -25,7 +24,6 @@ function Root() {
   return (
     <>
       <Header />
-      {/* <CategoryBar /> */}
       <Outlet />
     </>
   );
