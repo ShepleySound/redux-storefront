@@ -1,8 +1,10 @@
 # Redux Store(front)
 
+## [Live Site](https://dazzling-hummingbird-d1ab8d.netlify.app/)
+
 An e-commerce application that uses [Redux](https://redux-toolkit.js.org/) as the primary state container and [MUI](https://mui.com/) as the main source for UI components.
 
-The application features products from a live API, fetched using RTK Query.
+The application features data from a live API, fetched using RTK Query. In cases where the API does not provide sufficient properties to fill out a page, random or placeholder data is shown instead.
 
 From a developer standpoint, here are some of my goals in building this project -
 
