@@ -12,6 +12,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { selectCount } from '../features/cart/cartSlice';
 import { useState } from 'react';
 import CartList from './cart-list';
+import CategoryBar from './category-bar';
 
 export default function Header() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Header() {
     <>
       <AppBar color='transparent'>
         <Toolbar>
-          <Typography variant='h4' sx={{ flexGrow: 1 }}>
+          <Typography variant='h4' sx={{ flexGrow: 1 }} noWrap={true}>
             Redux Storefront
           </Typography>
           <Tooltip title='Cart'>
@@ -36,8 +37,11 @@ export default function Header() {
             </Badge>
           </Tooltip>
         </Toolbar>
+        <CategoryBar />
       </AppBar>
       <Toolbar />
+      <Toolbar sx={{ marginBottom: 2 }} />
+
       <Drawer
         anchor={'right'}
         open={isDrawerOpen}

@@ -2,12 +2,13 @@ import {
   Typography,
   Card,
   CardActions,
-  CardMedia,
   CardContent,
   Button,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../features/cart/cartSlice';
+import { Link } from 'react-router-dom';
+import numeral from 'numeral';
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -19,11 +20,10 @@ export default function ProductCard({ product }) {
         maxWidth: 400,
       }}
     >
-      {/* <CardMedia component='img' height='140' image={product.imageURL} /> */}
       <CardContent>
         <Typography variant='h5'>{product.name}</Typography>
         <Typography>{`Stock: ${product.inStock}`}</Typography>
-        <Typography>{`$ ${product.price}`}</Typography>
+        <Typography>{numeral(product.price).format('$0,0.00')}</Typography>
       </CardContent>
       <CardActions>
         <Button
@@ -34,6 +34,9 @@ export default function ProductCard({ product }) {
           }}
         >
           add to cart
+        </Button>
+        <Button component={Link} to={`/products/${product._id}`}>
+          view details
         </Button>
       </CardActions>
     </Card>
