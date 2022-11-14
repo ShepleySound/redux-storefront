@@ -1,6 +1,6 @@
 # Redux Store(front)
 
-## [Live Site](https://dazzling-hummingbird-d1ab8d.netlify.app/products)
+## [Live Site](https://dazzling-hummingbird-d1ab8d.netlify.app/)
 
 An e-commerce application that uses [Redux](https://redux-toolkit.js.org/) as the primary state container and [MUI](https://mui.com/) as the main source for UI components.
 
